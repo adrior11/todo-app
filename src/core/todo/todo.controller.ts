@@ -1,5 +1,4 @@
-// Controller sollten Stumpf sein
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Body, Param } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { Todo } from './db/todo.schema';
 
@@ -15,6 +14,20 @@ export class TodoController {
   @Get()
   async findAll() {
     return this.todoService.findAll();
+  }
+
+  @Get(':id')
+  async findOneById(@Param('id') id: number) {
+      return this.todoService.findOneById(id);
+  }
+
+  @Patch(':id/complete')
+  async completeTodo(@Param('id') id: number) {
+      const completedTodo = await this.todoService.complete(id);
+      if (!completedTodo) {
+          return { statusCode: 404, message: 'Todo not found' };
+      }
+      return completedTodo;
   }
 }
 

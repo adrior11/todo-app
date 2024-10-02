@@ -33,8 +33,17 @@ export class TodoService {
         return this.todoModel.find().exec();
     }
 
-    async findOneById(id: number): Promise<Todo | null> {
+    async findOneById(id: number): Promise<TodoDocument | null> {
         return this.todoModel.findOne({ id }).exec();
+    }
+
+    async complete(id: number): Promise<TodoDocument | null> {
+        const todo = await this.findOneById(id);
+        if (!todo) {
+            return null;
+        }
+        todo.completed = true;
+        return todo.save();
     }
 }
 

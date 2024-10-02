@@ -13,7 +13,7 @@ export class Todo {
     completed?: boolean;
 
     @Prop({ type: String, maxlength: 1, uppercase: true })
-    priority: string;
+    priority?: string;
 
     @Prop({ type: Date, default: Date.now })
     completionDate?: Date;
