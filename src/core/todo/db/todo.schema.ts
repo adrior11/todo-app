@@ -5,10 +5,6 @@ export type TodoDocument = Todo & Document;
 
 @Schema()
 export class Todo {
-    // Sequential unique ID
-    @Prop({ type: Number, unique: true })
-    id: number;
-
     @Prop({ required: true, type: Boolean, default: false })
     completed!: boolean;
 
@@ -21,6 +17,7 @@ export class Todo {
     @Prop({ required: true, type: Date, default: Date.now })
     creationDate!: Date;
 
+    // NOTE: Shouldn't be optional
     @Prop({ type: String })
     description?: string;
 }

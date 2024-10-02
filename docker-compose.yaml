@@ -1,14 +1,14 @@
 services:
-  mongodb:
-    image: mongo:latest
-    container_name: todo-mongo-db
-    ports:
-      - '27018:27017'
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    volumes:
-      - mongodb_data:/data/db  # Use a named Docker volume
+    mongodb:
+        image: mongo:latest
+        container_name: todo-mongo-db
+        ports:
+            - '27018:27017'
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: example
+        volumes:
+            - mongodb_data:/data/db # Use a named Docker volume
 
 volumes:
-  mongodb_data:
+    mongodb_data:

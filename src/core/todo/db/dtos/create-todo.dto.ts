@@ -4,7 +4,7 @@ import { Transform } from 'class-transformer';
 export class CreateTodoDto {
     @IsOptional()
     @IsBoolean()
-    completed?: boolean;
+    completed: boolean = false;
 
     @IsOptional()
     @Length(1, 1)
@@ -17,4 +17,3 @@ export class CreateTodoDto {
     @MaxLength(255)
     description?: string;
 }
-
