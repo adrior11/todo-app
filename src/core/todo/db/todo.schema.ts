@@ -9,17 +9,17 @@ export class Todo {
     @Prop({ type: Number, unique: true })
     id: number;
 
-    @Prop({ type: Boolean, default: false })
-    completed?: boolean;
+    @Prop({ required: true, type: Boolean, default: false })
+    completed!: boolean;
 
     @Prop({ type: String, maxlength: 1, uppercase: true })
     priority?: string;
 
-    @Prop({ type: Date, default: Date.now })
+    @Prop({ type: Date })
     completionDate?: Date;
 
-    @Prop({ type: Date, default: Date.now })
-    creationDate?: Date;
+    @Prop({ required: true, type: Date, default: Date.now })
+    creationDate!: Date;
 
     @Prop({ type: String })
     description?: string;

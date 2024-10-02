@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Todo, TodoDocument } from './db/todo.schema';
 import { Counter, CounterDocument } from './db/counter.schema';
+import { CreateTodoDto } from './db/dtos/create-todo.dto';
 
 @Injectable()
 export class TodoService {
@@ -20,11 +21,14 @@ export class TodoService {
         return counter.seq;
     }
 
-    async create(todo: Todo): Promise<Todo> {
+    async create(createTodoDto: CreateTodoDto): Promise<Todo> {
+        const { completed = false } = createTodoDto;
+        const completionDate = completed ? new Date() : null;
         const newTodo = new this.todoModel({
-            ...todo,
-            // Assign next sequential ID
-            id: await this.getNextSequenceValue('todoId'),
+            ...createTodoDto,
+            completed,
+            completionDate,
+            id: await this.getNextSequenceValue('todoId'), // Generate seq. ID
         });
         return newTodo.save();
     }
@@ -37,12 +41,14 @@ export class TodoService {
         return this.todoModel.findOne({ id }).exec();
     }
 
+    // TODO: Prevent call if already true?
     async complete(id: number): Promise<TodoDocument | null> {
         const todo = await this.findOneById(id);
         if (!todo) {
             return null;
         }
         todo.completed = true;
+        todo.completionDate = new Date();
         return todo.save();
     }
 }
