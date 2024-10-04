@@ -14,21 +14,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install fnm
-        run: |
-          curl -fsSL https://fnm.vercel.app/install | bash
-          export PATH="$HOME/.fnm:$PATH"
-          eval "$(fnm env)"
-
-      - name: Use Node.js version from .nvmrc
-        run: |
-          fnm install
-          fnm use
-          fnm default
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
 
       - name: Install pnpm
         run: npm install -g pnpm
-
+        
       - name: Install dependencies
         run: pnpm install
 
