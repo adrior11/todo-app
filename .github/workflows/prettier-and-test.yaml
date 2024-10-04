@@ -1,0 +1,39 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  install-dependencies-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install fnm
+        run: |
+          curl -fsSL https://fnm.vercel.app/install | bash
+          export PATH="$HOME/.fnm:$PATH"
+          eval "$(fnm env)"
+
+      - name: Use Node.js version from .nvmrc
+        run: |
+          fnm install
+          fnm use
+          fnm default
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Prettier and auto-format
+        run: pnpm prettier --write "src/**/*.ts"
+
+      - name: Run tests
+        run: pnpm run test
