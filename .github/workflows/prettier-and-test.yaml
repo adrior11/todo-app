@@ -18,16 +18,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
-
-      - name: Install pnpm globally
-        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Run Prettier and auto-format
-        run: pnpm prettier --write "src/**/*.ts"
+        run: npm prettier --write "src/**/*.ts"
 
       - name: Run tests
-        run: pnpm run test
+        run: npm run test
