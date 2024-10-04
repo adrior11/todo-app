@@ -1,0 +1,41 @@
+# @title Get all todos
+GET {{API_URL}}/todo
+
+HTTP/1.1 200  - OK
+x-powered-by: Express
+content-type: application/json; charset=utf-8
+content-length: 2
+etag: W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"
+date: Fri, 04 Oct 2024 14:34:14 GMT
+connection: keep-alive
+keep-alive: timeout=5
+###
+# @title Create a todo
+POST {{API_URL}}/todo
+Content-Type: application/json
+
+{
+  "priority": "A",
+  "description": "Buy milk"
+}
+
+HTTP/1.1 201  - Created
+x-powered-by: Express
+content-type: application/json; charset=utf-8
+content-length: 142
+etag: W/"8e-tFmwlKNDgHDXKBNYKlv7G6D/yOA"
+date: Fri, 04 Oct 2024 14:34:08 GMT
+connection: keep-alive
+keep-alive: timeout=5
+###
+# @title Delete all todos
+DELETE {{API_URL}}/todo
+
+HTTP/1.1 200  - OK
+x-powered-by: Express
+content-type: application/json; charset=utf-8
+content-length: 31
+etag: W/"1f-yTVzSstqb1Hzz7E3IawHap8mhtg"
+date: Fri, 04 Oct 2024 14:34:11 GMT
+connection: keep-alive
+keep-alive: timeout=5
