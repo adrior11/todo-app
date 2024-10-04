@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Patch, Body, Param, Delete } from '@nestjs/common';
+import {
+    Controller,
+    Get,
+    Post,
+    Patch,
+    Body,
+    Param,
+    Delete,
+    NotFoundException,
+} from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './db/dtos/create-todo.dto';
 import { UpdateTodoDto } from './db/dtos/update-todo.dto';
@@ -7,7 +16,6 @@ import { UpdateTodoDto } from './db/dtos/update-todo.dto';
 export class TodoController {
     constructor(private readonly todoService: TodoService) {}
 
-    // BUG: Invalid number as char priority
     // BUG: null as input causes server-side error
     @Post()
     async create(@Body() createTodoDto: CreateTodoDto) {
@@ -27,23 +35,19 @@ export class TodoController {
 
     @Get(':id')
     async findOneById(@Param('id') id: string) {
-        const todo = this.todoService.findOneById(id);
-        if (!todo) {
-            return { statusCode: 404, message: 'Todo not found' };
-        }
-        return todo;
+        await this.todoService.findById(id);
     }
 
     @Delete(':id')
     async deleteOneById(@Param('id') id: string) {
-        return this.todoService.deleteOneById(id);
+        return this.todoService.findByIdAndDelete(id);
     }
 
     @Patch(':id')
     async update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
         const todo = await this.todoService.update(id, updateTodoDto);
         if (!todo) {
-            return { statusCode: 404, message: 'Todo not found' };
+            throw new NotFoundException();
         }
         return todo;
     }

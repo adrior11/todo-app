@@ -17,9 +17,9 @@ export class Todo {
     @Prop({ required: true, type: Date, default: Date.now })
     creationDate!: Date;
 
-    // NOTE: Shouldn't be optional
+    // TODO: Tag; Context; key:value
     @Prop({ type: String })
-    description?: string;
+    description!: string;
 }
 
 export const TodoSchema = SchemaFactory.createForClass(Todo);
