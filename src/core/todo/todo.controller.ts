@@ -1,13 +1,4 @@
-import {
-    Controller,
-    Get,
-    Post,
-    Patch,
-    Body,
-    Param,
-    Delete,
-    NotFoundException,
-} from '@nestjs/common';
+import { Controller, Get, Post, Patch, Body, Param, Delete, NotFoundException } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './db/dtos/create-todo.dto';
 import { UpdateTodoDto } from './db/dtos/update-todo.dto';
