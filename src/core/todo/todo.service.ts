@@ -16,12 +16,7 @@ export class TodoService {
             }
         }
 
-        const completionDate = createTodoDto.completed ? new Date() : null;
-        const newTodo = new this.todoModel({
-            ...createTodoDto,
-            completionDate,
-        });
-
+        const newTodo = new this.todoModel(createTodoDto);
         return newTodo.save();
     }
 
