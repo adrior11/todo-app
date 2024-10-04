@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Run Prettier and auto-format
-        run: npm prettier --write "src/**/*.ts"
+        run: npm run prettier
 
       - name: Run tests
         run: npm run test
