@@ -1,10 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const testing_1 = require("@nestjs/testing");
-const mongoose_1 = require("@nestjs/mongoose");
-const todo_service_1 = require("../todo.service");
-const todo_schema_1 = require("../db/todo.schema");
-const common_1 = require("@nestjs/common");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+const testing_1 = require('@nestjs/testing');
+const mongoose_1 = require('@nestjs/mongoose');
+const todo_service_1 = require('../todo.service');
+const todo_schema_1 = require('../db/todo.schema');
+const common_1 = require('@nestjs/common');
 const mockTodo = {
     completed: false,
     priority: 'A',
@@ -54,7 +54,9 @@ describe('TodoService', () => {
             priority: 'invalid',
             description: 'Test Todo',
         };
-        await expect(service.create(createTodoDto)).rejects.toThrow('Invalid priority. Must be a single uppercase character.');
+        await expect(service.create(createTodoDto)).rejects.toThrow(
+            'Invalid priority. Must be a single uppercase character.',
+        );
     });
     it('should find all todos', async () => {
         const todos = [{}, {}];
@@ -168,8 +170,12 @@ describe('TodoService', () => {
         jest.spyOn(model, 'findById').mockReturnValue({
             exec: jest.fn().mockResolvedValue(mockTodo),
         });
-        await expect(service.update(id, updateTodoDto1)).rejects.toThrow('Invalid priority. Must be a single uppercase character.');
-        await expect(service.update(id, updateTodoDto2)).rejects.toThrow('Invalid priority. Must be a single uppercase character.');
+        await expect(service.update(id, updateTodoDto1)).rejects.toThrow(
+            'Invalid priority. Must be a single uppercase character.',
+        );
+        await expect(service.update(id, updateTodoDto2)).rejects.toThrow(
+            'Invalid priority. Must be a single uppercase character.',
+        );
         expect(model.findById).toHaveBeenCalledWith(id);
     });
     it('should return null if todo to update is not found', async () => {

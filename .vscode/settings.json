@@ -1,9 +1,12 @@
 {
     "cSpell.words": [
+        "astro",
+        "astrojs",
         "dtos",
         "maxlength",
         "metatype",
         "nestjs",
-        "todos"
+        "todos",
+        "tsconfigs"
     ]
 }

@@ -1,10 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const testing_1 = require("@nestjs/testing");
-const todo_controller_1 = require("../todo.controller");
-const todo_service_1 = require("../todo.service");
-const common_1 = require("@nestjs/common");
-const create_todo_dto_1 = require("../db/dtos/create-todo.dto");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+const testing_1 = require('@nestjs/testing');
+const todo_controller_1 = require('../todo.controller');
+const todo_service_1 = require('../todo.service');
+const common_1 = require('@nestjs/common');
+const create_todo_dto_1 = require('../db/dtos/create-todo.dto');
 const mockTodo = {
     _id: 'someId',
     completed: false,
@@ -64,7 +64,9 @@ describe('TodoController', () => {
                 priority: 'a',
                 description: 'Test Todo',
             };
-            await expect(validationPipe.transform(createTodoDto, { type: 'body', metatype: create_todo_dto_1.CreateTodoDto })).rejects.toThrow(common_1.BadRequestException);
+            await expect(
+                validationPipe.transform(createTodoDto, { type: 'body', metatype: create_todo_dto_1.CreateTodoDto }),
+            ).rejects.toThrow(common_1.BadRequestException);
         });
     });
     describe('findAll', () => {
