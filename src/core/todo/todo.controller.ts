@@ -7,7 +7,6 @@ import { UpdateTodoDto } from './db/dtos/update-todo.dto';
 export class TodoController {
     constructor(private readonly todoService: TodoService) {}
 
-    // BUG: null as input causes server-side error
     @Post()
     async create(@Body() createTodoDto: CreateTodoDto) {
         return this.todoService.create(createTodoDto);

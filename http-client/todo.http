@@ -4,9 +4,21 @@ GET {{API_URL}}/todo
 HTTP/1.1 200  - OK
 x-powered-by: Express
 content-type: application/json; charset=utf-8
-content-length: 2
-etag: W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"
-date: Fri, 04 Oct 2024 14:34:14 GMT
+content-length: 265
+etag: W/"109-0Wkl2CRq+eZNlOhE+X+f3c7ofag"
+date: Sat, 05 Oct 2024 15:48:04 GMT
+connection: keep-alive
+keep-alive: timeout=5
+###
+# @title Delete all todos
+DELETE {{API_URL}}/todo
+
+HTTP/1.1 200  - OK
+x-powered-by: Express
+content-type: application/json; charset=utf-8
+content-length: 31
+etag: W/"1f-yTVzSstqb1Hzz7E3IawHap8mhtg"
+date: Sat, 05 Oct 2024 15:47:28 GMT
 connection: keep-alive
 keep-alive: timeout=5
 ###
@@ -23,19 +35,93 @@ HTTP/1.1 201  - Created
 x-powered-by: Express
 content-type: application/json; charset=utf-8
 content-length: 142
-etag: W/"8e-tFmwlKNDgHDXKBNYKlv7G6D/yOA"
-date: Fri, 04 Oct 2024 14:34:08 GMT
+etag: W/"8e-OpNEzYXAPxgI9DnZwOxdehCkCVk"
+date: Sat, 05 Oct 2024 15:38:35 GMT
 connection: keep-alive
 keep-alive: timeout=5
 ###
-# @title Delete all todos
-DELETE {{API_URL}}/todo
+# @title Create a todo with null priority
+POST {{API_URL}}/todo
+Content-Type: application/json
 
-HTTP/1.1 200  - OK
+{
+  "priority": null,
+  "description": "Hello World!"
+}
+
+HTTP/1.1 201  - Created
 x-powered-by: Express
 content-type: application/json; charset=utf-8
-content-length: 31
-etag: W/"1f-yTVzSstqb1Hzz7E3IawHap8mhtg"
-date: Fri, 04 Oct 2024 14:34:11 GMT
+content-length: 131
+etag: W/"83-lW+D2mq4hWKjXMAlp5UEYPUDvaM"
+date: Sat, 05 Oct 2024 15:47:33 GMT
+connection: keep-alive
+keep-alive: timeout=5
+###
+# @title Create a todo without priority
+POST {{API_URL}}/todo
+Content-Type: application/json
+
+{
+  "description": "Hello World!"
+}
+
+HTTP/1.1 201  - Created
+x-powered-by: Express
+content-type: application/json; charset=utf-8
+content-length: 131
+etag: W/"83-wc09/xsksNZT5XwGlxs6uTt004Y"
+date: Sat, 05 Oct 2024 15:47:43 GMT
+connection: keep-alive
+keep-alive: timeout=5
+###
+# @title Create a faulty todo with wrong priority
+POST {{API_URL}}/todo
+Content-Type: application/json
+
+{
+  "priority": "1",
+  "description": "Hello World!"
+}
+
+HTTP/1.1 400  - Bad Request
+x-powered-by: Express
+content-type: application/json; charset=utf-8
+content-length: 92
+etag: W/"5c-1HWXtL5PoWXdiFDDSbL4KrvBUvI"
+date: Sat, 05 Oct 2024 15:47:46 GMT
+connection: keep-alive
+keep-alive: timeout=5
+###
+# @title Create a faulty todo with wrong description
+POST {{API_URL}}/todo
+Content-Type: application/json
+
+{
+  "description": null
+}
+
+HTTP/1.1 400  - Bad Request
+x-powered-by: Express
+content-type: application/json; charset=utf-8
+content-length: 204
+etag: W/"cc-DnT8/FA2lM+kWdzoPUWo996OnxA"
+date: Sat, 05 Oct 2024 15:47:48 GMT
+connection: keep-alive
+keep-alive: timeout=5
+###
+# @title Create a faulty todo without description
+POST {{API_URL}}/todo
+Content-Type: application/json
+
+{
+}
+
+HTTP/1.1 400  - Bad Request
+x-powered-by: Express
+content-type: application/json; charset=utf-8
+content-length: 204
+etag: W/"cc-DnT8/FA2lM+kWdzoPUWo996OnxA"
+date: Sat, 05 Oct 2024 15:47:56 GMT
 connection: keep-alive
 keep-alive: timeout=5

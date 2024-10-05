@@ -10,10 +10,14 @@ export class TodoService {
     constructor(@InjectModel(Todo.name) private readonly todoModel: Model<TodoDocument>) {}
 
     async create(createTodoDto: CreateTodoDto): Promise<Todo> {
-        if (createTodoDto.priority !== undefined) {
-            if (createTodoDto.priority.length !== 1 || !/[A-Z]/.test(createTodoDto.priority)) {
+        const { priority } = createTodoDto;
+
+        if (priority != null) {
+            if (priority.length !== 1 || !/[A-Z]/.test(priority)) {
                 throw new BadRequestException('Invalid priority. Must be a single uppercase character.');
             }
+        } else {
+            createTodoDto.priority = undefined;
         }
 
         const newTodo = new this.todoModel(createTodoDto);
