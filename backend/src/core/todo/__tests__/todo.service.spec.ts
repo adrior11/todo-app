@@ -62,6 +62,19 @@ describe('TodoService', () => {
         expect(result).toEqual(mockTodo);
     });
 
+    it('should create a new todo despite null priority', async () => {
+        const createTodoDto = {
+            priority: null,
+            description: 'Test Todo',
+        };
+
+        const result = await service.create(createTodoDto);
+
+        expect(mockTodoModel).toHaveBeenCalledWith(createTodoDto);
+        expect(mockTodo.save).toHaveBeenCalled();
+        expect(result).toEqual(mockTodo);
+    });
+
     it('should throw a BadRequestException if priority is invalid', async () => {
         const createTodoDto = {
             priority: 'invalid',

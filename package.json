@@ -12,7 +12,8 @@
       "lint": "pnpm --filter ./backend lint",
       "prettier": "pnpm --filter ./backend prettier && pnpm --filter ./frontend prettier",
       "start:backend": "pnpm --filter backend start",
-      "start:frontend": "pnpm --filter frontend start"
+      "start:frontend": "pnpm --filter frontend start",
+      "coverage": "pnpm --filter backend coverage"
     },
     "devDependencies": {
       "prettier": "^3.3.3"
