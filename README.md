@@ -1,1 +1,1 @@
-# NestJS Todo Application
+# Todo App - Monorepo

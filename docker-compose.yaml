@@ -1,5 +1,5 @@
 services:
-    mongodb:
+    todo-mongo-db:
         image: mongo:latest
         container_name: todo-mongo-db
         ports:
@@ -9,6 +9,37 @@ services:
             MONGO_INITDB_ROOT_PASSWORD: example
         volumes:
             - mongodb_data:/data/db # Use a named Docker volume
+        networks:
+            - backend-frontend
+
+    backend:
+        container_name: todo-backend
+        build: 
+            context: ./backend
+        ports:
+            - '3000:3000'
+        env_file:
+            - ./backend/.env
+        depends_on:
+            - todo-mongo-db
+        networks:
+            - backend-frontend
+
+    frontend:
+        container_name: todo-frontend
+        build:
+            context: ./frontend
+        ports:
+            - '8080:80'
+        env_file:
+            - ./frontend/.env
+        networks:
+            - backend-frontend
+
+networks:
+    backend-frontend:
+        driver: bridge
 
 volumes:
     mongodb_data:
+        driver: local

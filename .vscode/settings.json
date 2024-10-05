@@ -3,6 +3,7 @@
         "dtos",
         "maxlength",
         "metatype",
+        "nestjs",
         "todos"
     ]
 }
