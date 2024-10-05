@@ -1,11 +1,10 @@
-import { IsOptional, IsString, Length, MaxLength, MinLength } from 'class-validator';
-import { Transform } from 'class-transformer';
+import { IsOptional, IsString, Length, MaxLength, MinLength, Matches } from 'class-validator';
 
 export class CreateTodoDto {
     @IsOptional()
     @Length(1, 1)
     @IsString()
-    @Transform(({ value }) => value.toUpperCase())
+    @Matches(/[A-Z]/)
     priority?: string;
 
     @IsString()

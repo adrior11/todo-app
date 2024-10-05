@@ -26,7 +26,7 @@ export class TodoController {
 
     @Get(':id')
     async findOneById(@Param('id') id: string) {
-        await this.todoService.findById(id);
+        return await this.todoService.findById(id);
     }
 
     @Delete(':id')
