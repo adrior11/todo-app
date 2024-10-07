@@ -2,18 +2,14 @@
     "name": "todo-monorepo",
     "version": "1.0.0",
     "private": true,
-    "workspaces": [
-      "backend",
-      "frontend"
-    ],
     "scripts": {
-      "test": "pnpm --filter ./backend test",
+      "test": "pnpm --filter ./backend test && pnpm --filter ./libs/logger test",
       "format": "pnpm --filter ./backend format && pnpm --filter ./frontend format",
       "lint": "pnpm --filter ./backend lint",
-      "prettier": "pnpm --filter ./backend prettier && pnpm --filter ./frontend prettier",
+      "prettier": "pnpm --filter ./backend prettier && pnpm --filter ./frontend prettier && pnpm --filter ./libs/logger prettier",
       "start:backend": "pnpm --filter backend start",
       "start:frontend": "pnpm --filter frontend start",
-      "coverage": "pnpm --filter backend coverage"
+      "test:cov": "pnpm --filter ./backend test:cov"
     },
     "devDependencies": {
       "prettier": "^3.3.3"
