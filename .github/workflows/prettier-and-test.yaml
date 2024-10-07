@@ -19,11 +19,11 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-      # - name: Run Prettier and auto-format
-      #  run: npm run prettier
+      - name: Install dependencies using pnpm
+        run: pnpm install
 
       - name: Run tests
-        run: npm run test:npm
+        run: pnpm --filter ./backend test
