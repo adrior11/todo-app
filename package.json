@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-      "test": "pnpm --filter ./backend test && pnpm --filter ./libs/logger test",
+      "test": "pnpm --filter ./backend test",
       "format": "pnpm --filter ./backend format && pnpm --filter ./frontend format",
       "lint": "pnpm --filter ./backend lint",
-      "prettier": "pnpm --filter ./backend prettier && pnpm --filter ./frontend prettier && pnpm --filter ./libs/logger prettier",
+      "prettier": "pnpm --filter ./backend prettier && pnpm --filter ./frontend prettier",
       "start:backend": "pnpm --filter backend start",
       "start:frontend": "pnpm --filter frontend start",
       "test:cov": "pnpm --filter ./backend test:cov"
