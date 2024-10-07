@@ -18,8 +18,7 @@
         "test:cov": "jest --coverage",
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
         "test:e2e": "jest --config ./test/jest-e2e.json",
-        "prettier": "prettier --write .",
-        "coverage": "jest --coverage"
+        "prettier": "prettier --write ."
     },
     "dependencies": {
         "@nestjs/common": "^10.0.0",
@@ -30,9 +29,12 @@
         "axios": "^1.7.7",
         "class-transformer": "0.5.1",
         "class-validator": "0.14.1",
+        "lodash": "4.17.21",
         "mongoose": "8.7.0",
         "reflect-metadata": "^0.2.0",
-        "rxjs": "^7.8.1"
+        "rxjs": "^7.8.1",
+        "winston": "3.15.0",
+        "logger": "workspace:*"
     },
     "devDependencies": {
         "@nestjs/cli": "^10.0.0",
@@ -60,20 +62,19 @@
         "uuid": "10.0.0"
     },
     "jest": {
-        "moduleFileExtensions": [
+    "moduleFileExtensions": [
             "js",
             "json",
             "ts"
         ],
         "rootDir": "src",
-        "testRegex": ".*\\.spec\\.ts$",
+        "testMatch": ["**/__tests__/**/*.spec.ts"],
         "transform": {
             "^.+\\.(t|j)s$": "ts-jest"
         },
         "collectCoverageFrom": [
-            "**/*.(t|j)s"
-        ],
-        "coverageDirectory": "../coverage",
-        "testEnvironment": "node"
-    }
-}
+            "src/**/*.{ts,js}"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+}}
