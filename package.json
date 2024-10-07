@@ -4,6 +4,7 @@
     "private": true,
     "scripts": {
       "test": "pnpm --filter ./backend test",
+      "test:npm": "npm --filter ./backend test",
       "format": "pnpm --filter ./backend format && pnpm --filter ./frontend format",
       "lint": "pnpm --filter ./backend lint",
       "prettier": "pnpm --filter ./backend prettier && pnpm --filter ./frontend prettier",
