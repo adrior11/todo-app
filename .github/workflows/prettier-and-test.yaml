@@ -22,8 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Prettier and auto-format
-        run: npm run prettier
+      # - name: Run Prettier and auto-format
+      #  run: npm run prettier
 
       - name: Run tests
         run: npm run test
