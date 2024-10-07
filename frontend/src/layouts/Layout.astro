@@ -1,0 +1,15 @@
+---
+import '../styles/todo.css';
+
+const { title } = Astro.props;
+---
+
+<html>
+    <head>
+        <title>{title || 'Todo App'}</title>
+    </head>
+    <body>
+        <slot />
+        <script src="../scripts/todo.js"></script>
+    </body>
+</html>

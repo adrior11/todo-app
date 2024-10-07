@@ -41,9 +41,6 @@ importers:
       lodash:
         specifier: 4.17.21
         version: 4.17.21
-      logger:
-        specifier: workspace:*
-        version: link:../libs/logger
       mongoose:
         specifier: 8.7.0
         version: 8.7.0
@@ -138,28 +135,6 @@ importers:
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
-
-  libs/logger:
-    dependencies:
-      '@nestjs/common':
-        specifier: ^10.0.0
-        version: 10.4.4(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
-      '@nestjs/core':
-        specifier: ^10.0.0
-        version: 10.4.4(@nestjs/common@10.4.4(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.4)(reflect-metadata@0.2.2)(rxjs@7.8.1)
-      winston:
-        specifier: 3.15.0
-        version: 3.15.0
-    devDependencies:
-      '@types/jest':
-        specifier: ^29.5.13
-        version: 29.5.13
-      jest:
-        specifier: ^29.7.0
-        version: 29.7.0(@types/node@20.16.10)(ts-node@10.9.2(@types/node@20.16.10)(typescript@5.6.2))
-      ts-jest:
-        specifier: ^29.2.5
-        version: 29.2.5(@babel/core@7.25.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.25.2))(jest@29.7.0(@types/node@20.16.10)(ts-node@10.9.2(@types/node@20.16.10)(typescript@5.6.2)))(typescript@5.6.2)
 
 packages:
 

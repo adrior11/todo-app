@@ -1,0 +1,38 @@
+---
+const { todos } = Astro.props;
+---
+
+<div class="todo-container">
+  <div class="header">
+    <h1>Todo List</h1>
+    <button class="delete-button" id="clearTodosButton">Clear All</button>
+  </div>
+
+  <div class="input-container">
+    <input type="text" id="newTodoDescription" placeholder="Enter a new todo" />
+    <button id="addTodoButton">Add Todo</button>
+  </div>
+
+  {todos.length === 0 ? (
+    <p>No todos found.</p>
+  ) : (
+    <ul>
+      {todos.map(todo => (
+        <li key={todo._id}>
+          <input 
+            type="checkbox"
+            id={`checkbox-${todo._id}`}
+            class="todo-checkbox"
+            data-id={todo._id}
+            checked={todo.completed}
+            onchange="this.parentNode.querySelector('label').classList.toggle('completed', this.checked)"
+          />
+          <label for={`checkbox-${todo._id}`} class={todo.completed ? 'completed' : ''}>
+            {todo.description}
+          </label>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+

@@ -1,0 +1,17 @@
+---
+const { todo } = Astro.props;
+---
+
+<li key={todo._id}>
+  <input 
+    type="checkbox"
+    id={`checkbox-${todo._id}`}
+    class="todo-checkbox"
+    data-id={todo._id}
+    checked={todo.completed}
+    onchange="this.parentNode.querySelector('label').classList.toggle('completed', this.checked)"
+  />
+  <label for={`checkbox-${todo._id}`} class={todo.completed ? 'completed' : ''}>
+    {todo.description}
+  </label>
+</li>
